@@ -105,3 +105,5 @@ plt.plot(tiempos_finos, errores_absolutos_splines, label='Errores Splines', colo
 plt.legend()
 plt.title('Errores Absolutos')
 plt.show()
+
+# Calculamos el error cuadratico medio
