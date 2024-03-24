@@ -42,21 +42,11 @@ splines_x2 = CubicSpline(tiempos, mediciones['x2'])
 posiciones_interpoladas_x1_finos_splines = splines_x1(tiempos_finos)
 posiciones_interpoladas_x2_finos_splines = splines_x2(tiempos_finos)
 
-'''
-# Visualizar la trayectoria
-plt.figure(figsize=(10, 6))
-plt.scatter(mediciones['x1'], mediciones['x2'], label='Mediciones', color = 'y')
-plt.plot(posiciones_interpoladas_x1_finos, posiciones_interpoladas_x2_finos, label='Interpolacion', color = 'r')
-plt.plot(posiciones_interpoladas_x1_finos_splines, posiciones_interpoladas_x2_finos_splines, label='Interpolacion Splines', color = 'g')
-plt.plot(groundtruth['x1'], groundtruth['x2'], label='Groundtruth')
-plt.legend()
-plt.show() '''
 
 # Calculamos errores, usamos error Absoluto en cada punto
 
 errores_absolutos_lagrange = np.abs(polinomio_lagrange_x1(tiempos_finos) - groundtruth['x1']) + np.abs(polinomio_lagrange_x2(tiempos_finos) - groundtruth['x2'])
 errores_absolutos_splines = np.abs(splines_x1(tiempos_finos) - groundtruth['x1']) + np.abs(splines_x2(tiempos_finos) - groundtruth['x2'])
-
 
 #
 
@@ -105,5 +95,3 @@ plt.plot(tiempos_finos, errores_absolutos_splines, label='Errores Splines', colo
 plt.legend()
 plt.title('Errores Absolutos')
 plt.show()
-
-# Calculamos el error cuadratico medio
